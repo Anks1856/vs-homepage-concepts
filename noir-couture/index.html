@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vilas Satasiya — Concept B: Noir Couture</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wine:#600020; --wine-deep:#3a0012; --ivory:#f7f2ec; --cream:#efe6dc; --gold:#c9a96e; --ink:#1c1416; --muted:#8a7f80;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Jost,system-ui,sans-serif;background:#111;color:#eee;line-height:1.5}
+  .intro{max-width:1100px;margin:0 auto;padding:48px 24px 24px}
+  .intro h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:40px;letter-spacing:.01em}
+  .intro p{color:#aaa;max-width:760px;margin-top:10px;font-size:15px}
+  .picker{position:sticky;top:0;z-index:50;background:rgba(17,17,17,.92);backdrop-filter:blur(10px);border-bottom:1px solid #2a2a2a}
+  .picker-in{max-width:1100px;margin:0 auto;display:flex;gap:10px;align-items:center;padding:12px 24px;flex-wrap:wrap}
+  .picker span{color:#999;font-size:13px;margin-right:6px}
+  .pick{border:1px solid #3a3a3a;background:#1b1b1b;color:#eee;padding:9px 16px;border-radius:999px;cursor:pointer;font:500 13px Jost,sans-serif;letter-spacing:.04em;transition:.2s}
+  .pick:hover{border-color:var(--gold)}
+  .pick.selected{background:var(--gold);color:#111;border-color:var(--gold)}
+  .pick a{color:inherit;text-decoration:none}
+
+  .opt{max-width:1100px;margin:56px auto;padding:0 24px}
+  .opt-head{display:flex;align-items:baseline;gap:16px;margin-bottom:16px}
+  .opt-head .letter{font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--gold);line-height:1}
+  .opt-head h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:30px}
+  .opt-head p{color:#aaa;font-size:14px;margin-top:4px}
+  .frame{border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6);border:1px solid #2a2a2a}
+  .chrome{height:34px;background:#1e1e1e;display:flex;align-items:center;gap:6px;padding:0 14px;border-bottom:1px solid #2a2a2a}
+  .chrome i{width:10px;height:10px;border-radius:50%;background:#3a3a3a;display:block}
+  .chrome em{margin-left:12px;font-style:normal;color:#777;font-size:12px}
+  .site{position:relative;overflow:hidden}
+
+  /* ---------- shared site parts ---------- */
+  .nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:26px 48px;font-size:12px;letter-spacing:.22em;text-transform:uppercase}
+  .nav ul{display:flex;gap:28px;list-style:none}
+  .nav .logo{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.3em;text-transform:uppercase;font-weight:500}
+  .nav .cta{border:1px solid currentColor;padding:10px 18px;letter-spacing:.2em}
+  .hero{position:relative;height:640px;overflow:hidden}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;animation:kb 18s ease-in-out infinite alternate}
+  @keyframes kb{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+  .hero .shade{position:absolute;inset:0}
+  .hero .copy{position:absolute;z-index:3}
+  .eyebrow{font-size:11px;letter-spacing:.35em;text-transform:uppercase;opacity:.85}
+  .h-serif{font-family:'Cormorant Garamond',serif;font-weight:300;line-height:1.02}
+  .btn{display:inline-block;white-space:nowrap;padding:16px 34px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;transition:.3s}
+  .btn.solid{background:var(--wine);color:#fff}
+  .btn.gold{background:var(--gold);color:#1a1010}
+  .btn.line{border:1px solid currentColor;color:inherit}
+  .sec{padding:88px 48px}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px}
+  .sec-head h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:44px;line-height:1}
+  .sec-head a{font-size:11px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;color:inherit;border-bottom:1px solid currentColor;padding-bottom:4px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .tile{position:relative;aspect-ratio:3/4;overflow:hidden}
+  .tile img{width:100%;height:100%;object-fit:cover;object-position:center 15%;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+  .tile:hover img{transform:scale(1.06)}
+  .tile .lab{position:absolute;left:0;right:0;bottom:0;padding:22px;color:#fff;background:linear-gradient(to top,rgba(20,5,10,.75),transparent)}
+  .tile .lab b{display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:26px}
+  .tile .lab s{text-decoration:none;font-size:10px;letter-spacing:.3em;text-transform:uppercase;opacity:.8}
+  .story{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+  .story p{font-size:15px;line-height:1.8;max-width:460px}
+  .story blockquote{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:300;font-size:34px;line-height:1.2;margin-bottom:22px}
+  .book{text-align:center}
+  .book h3{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:52px;line-height:1.05;margin:14px 0 18px}
+  .book p{max-width:520px;margin:0 auto 32px;font-size:15px;opacity:.85}
+  .foot{display:flex;justify-content:space-between;padding:26px 48px;font-size:10px;letter-spacing:.25em;text-transform:uppercase;opacity:.7;border-top:1px solid rgba(128,128,128,.25)}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- A : Ivory Maison ---------- */
+  .A{background:var(--ivory);color:var(--ink)}
+  .A .nav{color:#fff}
+  .A .hero .shade{background:linear-gradient(to top,rgba(40,8,18,.65),rgba(40,8,18,.05) 55%)}
+  .A .hero .copy{left:48px;right:48px;bottom:72px;color:#fff}
+  .A .hero h1{font-size:92px;max-width:760px;margin:14px 0 26px}
+  .A .hero h1 i{font-style:italic;color:var(--gold)}
+  .A .sec-head a{color:var(--wine)}
+  .A .story{background:#fff}
+  .A .story blockquote{color:var(--wine)}
+  .A .book{background:var(--wine);color:var(--ivory)}
+  .A .book .eyebrow{color:var(--gold)}
+  .A .foot{color:var(--muted)}
+  .A .marquee{background:var(--cream);padding:18px 0;overflow:hidden;white-space:nowrap;font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.12em;color:var(--wine)}
+  .A .marquee span{display:inline-block;padding-right:64px;animation:mq 30s linear infinite}
+  @keyframes mq{to{transform:translateX(-50%)}}
+
+  /* ---------- B : Noir Couture ---------- */
+  .B{background:#120a0d;color:#f1e9e2}
+  .B .nav{color:#f1e9e2}
+  .B .hero{height:700px}
+  .B .hero img{object-position:70% 15%}
+  .B .hero .shade{background:linear-gradient(to right,rgba(18,10,13,.78),rgba(18,10,13,.15) 60%),linear-gradient(to top,#120a0d,transparent 35%)}
+  .B .hero .copy{left:48px;bottom:96px;color:#f1e9e2}
+  .B .hero h1{font-size:104px;max-width:820px;margin:16px 0 28px;letter-spacing:-.01em}
+  .B .hero h1 i{font-style:italic;color:var(--gold);font-weight:300}
+  .B .hero .copy .eyebrow{color:var(--gold)}
+  .B .sec-head h3{color:#f1e9e2}
+  .B .sec-head a{color:var(--gold)}
+  .B .tile{border:1px solid rgba(201,169,110,.18)}
+  .B .story{background:#1a0f13}
+  .B .story blockquote{color:var(--gold)}
+  .B .story p{color:#cdbfb6}
+  .B .book{background:linear-gradient(180deg,#120a0d,#2a0a16)}
+  .B .book .eyebrow{color:var(--gold)}
+  .B .foot{color:#8f7f78;border-top-color:rgba(201,169,110,.2)}
+  .B .numbers{display:flex;justify-content:space-around;padding:40px 48px;border-top:1px solid rgba(201,169,110,.2);border-bottom:1px solid rgba(201,169,110,.2)}
+  .B .numbers div{text-align:center}
+  .B .numbers b{display:block;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:48px;color:var(--gold)}
+  .B .numbers s{text-decoration:none;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#a89a92}
+
+  /* ---------- C : Editorial Split ---------- */
+  .C{background:#fbf8f4;color:var(--ink)}
+  .C .nav{color:var(--ink);position:relative;border-bottom:1px solid #e6ddd3}
+  .C .nav .logo{color:var(--wine)}
+  .C .split{display:grid;grid-template-columns:1fr 1fr;height:660px}
+  .C .split .text{padding:72px 56px;display:flex;flex-direction:column;justify-content:space-between;background:#fbf8f4}
+  .C .split h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:86px;line-height:.98;margin:18px 0 24px;color:var(--ink)}
+  .C .split h1 i{font-style:italic;color:var(--wine)}
+  .C .split .sub{font-size:14px;color:#6c6062;max-width:400px;line-height:1.8}
+  .C .split .ctas{display:flex;gap:14px;margin-top:28px}
+  .C .split .img{position:relative;overflow:hidden;height:660px;min-height:0}
+  .C .split .img img{width:100%;height:100%;object-fit:cover;object-position:center 15%;animation:kb 18s ease-in-out infinite alternate}
+  .C .split .img .tag{position:absolute;left:24px;bottom:24px;background:rgba(251,248,244,.92);padding:14px 18px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--wine)}
+  .C .meta{display:flex;gap:40px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#8a7f80}
+  .C .masonry{display:grid;grid-template-columns:1.3fr 1fr 1fr;grid-template-rows:260px 260px;gap:18px}
+  .C .masonry .tile{aspect-ratio:auto}
+  .C .masonry .tile:first-child{grid-row:span 2}
+  .C .sec-head a{color:var(--wine)}
+  .C .story{background:#fff}
+  .C .story blockquote{color:var(--wine)}
+  .C .book{background:var(--wine-deep);color:var(--ivory)}
+  .C .book .eyebrow{color:var(--gold)}
+  .C .foot{color:var(--muted)}
+  .C .ticker{display:flex;gap:0;border-top:1px solid #e6ddd3;border-bottom:1px solid #e6ddd3}
+  .C .ticker div{flex:1;padding:26px;text-align:center;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#6c6062;border-right:1px solid #e6ddd3}
+  .C .ticker div:last-child{border-right:0}
+  .C .ticker b{display:block;font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px;letter-spacing:0;text-transform:none;color:var(--wine);margin-bottom:4px}
+
+  /* standalone preview */
+  body{background:#000}
+  .site{min-height:100vh}
+  .badge{position:fixed;right:14px;bottom:14px;z-index:99;background:rgba(0,0,0,.72);color:#eee;font:500 11px Jost,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:9px 14px;border-radius:999px;backdrop-filter:blur(8px)}
+  .badge a{color:#c9a96e;text-decoration:none}
+  @media (max-width:900px){
+    .nav{padding:18px 20px;font-size:10px}
+    .nav ul{display:none}
+    .nav .cta{padding:8px 12px;font-size:9px;letter-spacing:.14em}
+    .nav .logo{font-size:16px;letter-spacing:.2em}
+    .hero,.B .hero{height:78vh}
+    .A .hero .copy,.B .hero .copy{left:20px;right:20px;bottom:40px}
+    .A .hero h1,.B .hero h1{font-size:46px}
+    .btn{padding:14px 20px;font-size:10px;letter-spacing:.2em}
+    .btn+.btn{margin-left:0!important;margin-top:10px}
+    .sec{padding:56px 20px}
+    .sec-head h3{font-size:32px}
+    .grid3{grid-template-columns:1fr 1fr;gap:12px}
+    .story{grid-template-columns:1fr;gap:28px}
+    .story blockquote{font-size:26px}
+    .book h3{font-size:36px}
+    .foot{padding:20px;flex-direction:column;gap:8px}
+    .B .numbers{flex-wrap:wrap;gap:20px;padding:28px 20px}
+    .B .numbers div{width:45%}
+    .B .numbers b{font-size:34px}
+    .C .split{grid-template-columns:1fr;height:auto}
+    .C .split .text{padding:36px 20px;gap:24px}
+    .C .split h1{font-size:46px}
+    .C .split .img{height:70vh}
+    .C .meta{flex-wrap:wrap;gap:12px 20px}
+    .C .ticker{flex-wrap:wrap}
+    .C .ticker div{flex:1 1 50%;border-bottom:1px solid #e6ddd3;padding:18px 12px}
+    .C .masonry{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+    .C .masonry .tile{aspect-ratio:3/4}
+    .C .masonry .tile:first-child{grid-row:auto;grid-column:span 2;aspect-ratio:4/3}
+  }
+</style>
+</head>
+<body>
+<div class="site B">
+    <div class="nav"><div class="logo">Vilas Satasiya</div><ul><li>Collections</li><li>Bridal</li><li>Atelier</li><li>Journal</li></ul><span class="cta" style="border-color:var(--gold);color:var(--gold)">Book an appointment</span></div>
+    <div class="hero">
+      <img src="https://cdn.shopify.com/s/files/1/0680/0238/1869/files/5Z8A5343.jpg?width=1600" alt="">
+      <div class="shade"></div>
+      <div class="copy">
+        <div class="eyebrow">Sangini · Bridal Couture 2025</div>
+        <h1 class="h-serif">The art of <i>being</i> a bride.</h1>
+        <a class="btn gold" href="#">Book an appointment</a>
+        <a class="btn line" style="margin-left:14px;color:#f1e9e2" href="#">Explore Sangini</a>
+      </div>
+    </div>
+    <div class="numbers reveal"><div><b>12+</b><s>Years of couture</s></div><div><b>900+</b><s>Brides dressed</s></div><div><b>100%</b><s>Hand embroidered</s></div><div><b>1:1</b><s>Private fittings</s></div></div>
+    <div class="sec reveal">
+      <div class="sec-head"><h3>Collections</h3><a href="#">View all</a></div>
+      <div class="grid3">
+        <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0680/0238/1869/files/0M6A0126comp_1.jpg?width=800" alt=""><div class="lab"><s>Bridal</s><b>Sangini</b></div></div>
+        <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0680/0238/1869/files/DSC02345.jpg?width=800" alt=""><div class="lab"><s>Evening</s><b>Holiday Edit</b></div></div>
+        <div class="tile"><img src="https://cdn.shopify.com/s/files/1/0680/0238/1869/files/5Z8A4573.jpg?width=800" alt=""><div class="lab"><s>Festive</s><b>Rangat</b></div></div>
+      </div>
+    </div>
+    <div class="sec story reveal">
+      <div><div class="eyebrow" style="color:var(--gold)">The House</div><blockquote>Couture is not worn. It is lived in, for one unforgettable day.</blockquote><p>Hand corsetry, zardozi and sequin embroidery, and silhouettes cut for movement. Each piece is made once, for one woman, through private fittings at our atelier.</p><a class="btn line" style="margin-top:28px;color:var(--gold)" href="#">Inside the atelier</a></div>
+      <div><img src="https://cdn.shopify.com/s/files/1/0680/0238/1869/files/0M6A0173_3.jpg?width=900" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 10%" alt=""></div>
+    </div>
+    <div class="sec book reveal"><div class="eyebrow">By appointment only</div><h3>Your bridal consultation awaits</h3><p>Reserve a private appointment at the atelier or over video. We take a limited number of brides each season.</p><a class="btn gold" href="#">Book an appointment</a></div>
+    <div class="foot"><span>© 2026 Vilas Satasiya</span><span>Instagram · WhatsApp · Surat</span></div>
+  
+<div class="badge">Concept B · Noir Couture &nbsp;|&nbsp; <a href="../ivory-maison/">A</a> · <a href="../noir-couture/">B</a> · <a href="../editorial-split/">C</a></div>
+<script>
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),3000);
+</script>
+</body>
+</html>
